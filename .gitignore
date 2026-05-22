@@ -17,6 +17,8 @@
 /.next/
 /out/
 
+/context/current-issues.md
+
 # production
 /build
 

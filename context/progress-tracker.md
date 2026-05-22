@@ -9,7 +9,7 @@ changes.
 
 ## Current Goal
 
-- Wire Clerk auth into the app: provider, auth pages, route protection, and user menu.
+- Implement project dialogs and editor home screen (04-project-dialogs.md)
 
 ## Completed
 
@@ -29,7 +29,16 @@ changes.
   - Home page (`app/page.tsx`) — redirects authenticated users to `/editor`, unauthenticated to `/sign-in`.
   - Editor navbar — `UserButton` added to right section with dark-themed popover styling.
   - `next build` passes with zero errors.
+- Project dialogs and editor home screen (04-project-dialogs.md):
+  - `useProjectDialogs` hook — manages dialog state, form state, loading state, and mock project data.
+  - Create Project dialog — project name input with live slug preview.
+  - Rename Project dialog — prefilled name, auto-focus, Enter-to-submit.
+  - Delete Project dialog — destructive confirmation, no input.
+  - Editor home screen — centered heading, description, and "New Project" button wired to Create dialog.
+  - Sidebar — project list with My Projects / Shared tabs, rename (Pencil icon) and delete (Trash2 icon) actions on hover for owned projects only.
+  - Mobile — backdrop scrim clicking closes sidebar.
+  - Build verified: `next build` passes with zero TypeScript or lint errors.
 
 ## In Progress
 
-- None yet.
+- Project dialogs and editor home screen (04-project-dialogs.md) — completed, build verified zero errors.
