@@ -9,7 +9,7 @@ changes.
 
 ## Current Goal
 
-- Implement project dialogs and editor home screen (04-project-dialogs.md)
+- Implement Prisma data models, client singleton, and first migration (05-prisma.md)
 
 ## Completed
 
@@ -38,7 +38,13 @@ changes.
   - Sidebar — project list with My Projects / Shared tabs, rename (Pencil icon) and delete (Trash2 icon) actions on hover for owned projects only.
   - Mobile — backdrop scrim clicking closes sidebar.
   - Build verified: `next build` passes with zero TypeScript or lint errors.
+- Prisma data models, client singleton, and migration (05-prisma.md):
+  - `prisma/models/project.prisma` — `Project` model (ownerId, name, description, status enum, canvasJsonPath, timestamps, indexes) and `ProjectCollaborator` model (project relation with cascade delete, email, unique constraint, indexes).
+  - `lib/prisma.ts` — cached singleton branching on `DATABASE_URL`: `accelerateUrl` for `prisma+postgres://`, `adapter` for `@prisma/adapter-pg` direct connections.
+  - Migration `20260522125007_add_project_and_collaborator_models` applied successfully.
+  - `prisma generate` produces client at `app/generated/prisma/`.
+  - Build verified: `next build` passes with zero TypeScript or lint errors.
 
 ## In Progress
 
-- Project dialogs and editor home screen (04-project-dialogs.md) — completed, build verified zero errors.
+- Prisma data models, client singleton, and migration (05-prisma.md) — completed, build verified zero errors.
