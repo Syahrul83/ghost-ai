@@ -1,15 +1,30 @@
 "use client"
 
-import { Plus, X } from "lucide-react"
+import { Pencil, Plus, Trash2, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import type { Project } from "@/hooks/use-project-dialogs"
 
 interface ProjectSidebarProps {
   isOpen: boolean
   onClose: () => void
+  projects: Project[]
+  onOpenCreate: () => void
+  onOpenRename: (project: Project) => void
+  onOpenDelete: (project: Project) => void
 }
 
-export function ProjectSidebar({ isOpen, onClose }: ProjectSidebarProps) {
+export function ProjectSidebar({
+  isOpen,
+  onClose,
+  projects,
+  onOpenCreate,
+  onOpenRename,
+  onOpenDelete,
+}: ProjectSidebarProps) {
+  const ownedProjects = projects.filter((p) => p.isOwner)
+  const sharedProjects = projects.filter((p) => !p.isOwner)
+
   return (
     <>
       {/* Backdrop when sidebar is open */}
@@ -50,24 +65,84 @@ export function ProjectSidebar({ isOpen, onClose }: ProjectSidebarProps) {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="my-projects" className="flex flex-1 flex-col px-4 py-6">
-            <EmptyState message="No projects yet" />
+          <TabsContent value="my-projects" className="flex flex-1 flex-col px-3 py-4">
+            {ownedProjects.length === 0 ? (
+              <EmptyState message="No projects yet" />
+            ) : (
+              <ul className="space-y-1">
+                {ownedProjects.map((project) => (
+                  <ProjectItem
+                    key={project.id}
+                    project={project}
+                    onRename={onOpenRename}
+                    onDelete={onOpenDelete}
+                  />
+                ))}
+              </ul>
+            )}
           </TabsContent>
 
-          <TabsContent value="shared" className="flex flex-1 flex-col px-4 py-6">
-            <EmptyState message="No shared projects" />
+          <TabsContent value="shared" className="flex flex-1 flex-col px-3 py-4">
+            {sharedProjects.length === 0 ? (
+              <EmptyState message="No shared projects" />
+            ) : (
+              <ul className="space-y-1">
+                {sharedProjects.map((project) => (
+                  <ProjectItem
+                    key={project.id}
+                    project={project}
+                    onRename={onOpenRename}
+                    onDelete={onOpenDelete}
+                  />
+                ))}
+              </ul>
+            )}
           </TabsContent>
         </Tabs>
 
         {/* New Project button */}
         <div className="border-t border-border-default p-4">
-          <Button className="w-full gap-2">
+          <Button className="w-full gap-2" onClick={onOpenCreate}>
             <Plus className="size-4" />
             New Project
           </Button>
         </div>
       </aside>
     </>
+  )
+}
+
+interface ProjectItemProps {
+  project: Project
+  onRename: (project: Project) => void
+  onDelete: (project: Project) => void
+}
+
+function ProjectItem({ project, onRename, onDelete }: ProjectItemProps) {
+  return (
+    <li className="group flex items-center justify-between rounded-lg px-3 py-2 text-sm text-text-muted hover:bg-subtle hover:text-text-secondary transition-colors">
+      <span className="truncate">{project.name}</span>
+      {project.isOwner && (
+        <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+          <Button
+            variant="ghost"
+            size="icon-xs"
+            onClick={() => onRename(project)}
+            aria-label={`Rename ${project.name}`}
+          >
+            <Pencil className="size-3.5" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon-xs"
+            onClick={() => onDelete(project)}
+            aria-label={`Delete ${project.name}`}
+          >
+            <Trash2 className="size-3.5 text-state-error" />
+          </Button>
+        </div>
+      )}
+    </li>
   )
 }
 
