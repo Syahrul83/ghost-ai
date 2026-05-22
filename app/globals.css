@@ -1,1 +1,117 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── Project Design Tokens ─── */
+@theme inline {
+  /* Typography */
+  --font-heading: var(--font-geist-sans);
+  --font-sans: var(--font-geist-sans);
+
+  /* Surface colors */
+  --color-base: var(--bg-base);
+  --color-surface: var(--bg-surface);
+  --color-elevated: var(--bg-elevated);
+  --color-subtle: var(--bg-subtle);
+
+  /* Borders */
+  --color-border-default: var(--border-default);
+  --color-border-subtle: var(--border-subtle);
+
+  /* Text */
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+
+  /* Brand / Accent */
+  --color-brand: var(--accent-primary);
+  --color-brand-dim: var(--accent-primary-dim);
+  --color-accent-ai: var(--accent-ai);
+  --color-accent-ai-text: var(--accent-ai-text);
+
+  /* States */
+  --color-state-error: var(--state-error);
+  --color-state-success: var(--state-success);
+  --color-state-warning: var(--state-warning);
+
+  /* shadcn/ui required tokens mapped to project theme */
+  --color-background: var(--bg-base);
+  --color-foreground: var(--text-secondary);
+  --color-card: var(--bg-surface);
+  --color-card-foreground: var(--text-secondary);
+  --color-popover: var(--bg-elevated);
+  --color-popover-foreground: var(--text-secondary);
+  --color-primary: var(--accent-primary);
+  --color-primary-foreground: #080809;
+  --color-secondary: var(--bg-subtle);
+  --color-secondary-foreground: var(--text-secondary);
+  --color-muted: var(--bg-subtle);
+  --color-muted-foreground: var(--text-muted);
+  --color-accent: var(--accent-primary-dim);
+  --color-accent-foreground: var(--accent-primary);
+  --color-destructive: var(--state-error);
+  --color-border: var(--border-default);
+  --color-input: var(--border-subtle);
+  --color-ring: var(--accent-primary);
+
+  /* Chart colors (keep shadcn defaults adjusted for dark) */
+  --color-chart-1: oklch(0.646 0.222 41.116);
+  --color-chart-2: oklch(0.6 0.118 184.704);
+  --color-chart-3: oklch(0.398 0.07 227.392);
+  --color-chart-4: oklch(0.828 0.189 84.429);
+  --color-chart-5: oklch(0.769 0.188 70.08);
+
+  /* Sidebar */
+  --color-sidebar: var(--bg-surface);
+  --color-sidebar-foreground: var(--text-secondary);
+  --color-sidebar-primary: var(--accent-primary);
+  --color-sidebar-primary-foreground: #080809;
+  --color-sidebar-accent: var(--accent-primary-dim);
+  --color-sidebar-accent-foreground: var(--accent-primary);
+  --color-sidebar-border: var(--border-default);
+  --color-sidebar-ring: var(--accent-primary);
+
+  /* Radius */
+  --radius: 0.625rem;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* ─── CSS Custom Properties (applied at :root — dark-only) ─── */
+:root {
+  --bg-base: #080809;
+  --bg-surface: #111114;
+  --bg-elevated: #18181c;
+  --bg-subtle: #1e1e23;
+  --border-default: #2a2a30;
+  --border-subtle: #3a3a42;
+  --text-secondary: #c0c0cc;
+  --text-muted: #808090;
+  --text-faint: #505060;
+  --accent-primary: #00c8d4;
+  --accent-primary-dim: rgba(0, 200, 212, 0.12);
+  --accent-ai: #6457f9;
+  --accent-ai-text: #8b82ff;
+  --state-error: #ff4d4f;
+  --state-success: #34d399;
+  --state-warning: #fbbf24;
+}
+
+@layer base {
+  * {
+    @apply border-border-default outline-ring/50;
+  }
+  body {
+    @apply bg-base text-text-secondary font-sans antialiased;
+  }
+  html {
+    @apply font-sans;
+  }
+}

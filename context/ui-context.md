@@ -11,24 +11,24 @@ values or raw Tailwind color classes like zinc -\*
 
 ## Colors
 
-| Role             | CSS Variable           | Hex/Value                |
-| ---------------- | ---------------------- | ------------------------ |
-| Page background  | `--bg-base`            | `#080809`                |
-| Surface          | `--bg-surface`         | `#111114`                |
-| Elevated surface | `--bg-elevated`        | `#18181c`                |
-| Subtle surface   | `--bg-subtle`          | `#1e1e23`                |
-| Default border   | `--border-default`     | `#2a2a30`                |
-| Subtle border    | `--border-subtle`      | `#3a3a42`                |
-| Secondary text   | `--text-secondary`     | `#c0c0cc`                |
-| Muted text       | `--text-muted`         | `#808090`                |
-| Faint text       | `--text-faint`         | `#505060`                |
-| Brand accent     | `--accent-primary`     | `#505060`                |
-| Brand dim        | `--accent-primary-dim` | `#00c8d4 (cyan)`         |
-| Al accent        | `--accent-ai`          | `rgba(0, 200, 212,0.12)` |
-| Al text          | `--accent-ai-text`     | `#8b82ff`                |
-| Error            | `--state-error`        | `#ff4d4f`                |
-| Success          | `--state-success`      | `#34d399`                |
-| Warning          | `--state-warning`      | `#fbbf24`                |
+| Role             | CSS Variable           | Hex/Value                 |
+| ---------------- | ---------------------- | ------------------------- |
+| Page background  | `--bg-base`            | `#080809`                 |
+| Surface          | `--bg-surface`         | `#111114`                 |
+| Elevated surface | `--bg-elevated`        | `#18181c`                 |
+| Subtle surface   | `--bg-subtle`          | `#1e1e23`                 |
+| Default border   | `--border-default`     | `#2a2a30`                 |
+| Subtle border    | `--border-subtle`      | `#3a3a42`                 |
+| Secondary text   | `--text-secondary`     | `#c0c0cc`                 |
+| Muted text       | `--text-muted`         | `#808090`                 |
+| Faint text       | `--text-faint`         | `#505060`                 |
+| Brand accent     | `--accent-primary`     | `#00c8d4`(cyan)           |
+| Brand dim        | `--accent-primary-dim` | `rgba(0, 200, 212,0.12)`  |
+| Al accent        | `--accent-ai`          | `#6457f9` (indigo-purple) |
+| Al text          | `--accent-ai-text`     | `#8b82ff`                 |
+| Error            | `--state-error`        | `#ff4d4f`                 |
+| Success          | `--state-success`      | `#34d399`                 |
+| Warning          | `--state-warning`      | `#fbbf24`                 |
 
 Tailwind utility names map to these variables. Use bg-base, bg-surface, text-copy-
 primary , text-copy-muted, border-surface-border, text-brand, bg-accent-dim, etc.
